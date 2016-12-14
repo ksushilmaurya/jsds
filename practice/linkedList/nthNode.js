@@ -18,8 +18,24 @@ list.add(20);
 list.add(30);
 list.add(40);
 list.add(50);
-list.display()
+// list.display()
 
 var nthNode = function(list, n) {
-	
+	var slowPtr = list.head;
+	var fastPtr = list.head;
+	var temp = 1;	
+	while (fastPtr.next!=null) {
+		if(temp>=n) {
+			slowPtr = slowPtr.next;
+		}
+		fastPtr = fastPtr.next;	
+		temp++;	
+	}
+	if(temp<n) { // handle boundry cases
+		return -1;
+	} else {
+		return slowPtr.data;	
+	}
 }
+
+console.log(nthNode(list,1));
